@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  server:
+    restart: always
+    build: server/.
+    ports:
+      - '8002:80'
+    container_name: back_practice_one_server
+  db:
+    build: db/.
+    restart: always
+    ports:
+      - '8001:80'
+    container_name: back_practice_one_db
