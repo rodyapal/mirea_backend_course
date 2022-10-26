@@ -1,0 +1,9 @@
+<Files users.php>
+    Allow from All
+</Files>
+<Files valuables.php>
+    Allow from All
+</Files>
+<Files db_access.php>
+    Deny from all
+</Files>
