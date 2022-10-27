@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql:
+    container_name: back_practice_three_mysql
+    image: mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appDb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/1.sql
+      - database:/var/lib/mysql
+    ports:
+      - '3306:3306'
+
+  apache-php:
+    container_name: back_practice_three_apache_php
+    build: apache-php
+    volumes:
+      - ./apache-php/src:/var/www/html-dynamic
+    ports:
+      - '8001:8001'
+
+  nginx:
+    container_name: back_practice_three_nginx
+    build: nginx
+    volumes:
+      - ./nginx/src:/usr/share/nginx/html-static
+    ports:
+      - '8002:8002'
+
+volumes:
+  database:
