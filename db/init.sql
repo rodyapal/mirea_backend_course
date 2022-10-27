@@ -6,7 +6,7 @@ USE appDb;
 
 CREATE TABLE IF NOT EXISTS users
 (
-    id       INT(11)                         NOT NULL AUTO_INCREMENT,
+    id         INT(11)                         NOT NULL AUTO_INCREMENT,
     `name`     VARCHAR(20) CHARACTER SET ascii NOT NULL,
     `password` VARCHAR(45) CHARACTER SET ascii NOT NULL,
     PRIMARY KEY (id)
@@ -16,10 +16,10 @@ CREATE TABLE IF NOT EXISTS users
 
 CREATE TABLE IF NOT EXISTS valuables
 (
-    id          INT(10)      NOT NULL AUTO_INCREMENT,
-    title       VARCHAR(32)  NOT NULL,
+    id            INT(10)      NOT NULL AUTO_INCREMENT,
+    title         VARCHAR(32)  NOT NULL,
     `description` VARCHAR(256) NOT NULL,
-    cost        INT(6)       NOT NULL,
+    cost          INT(6)       NOT NULL,
     PRIMARY KEY (id)
 );
 

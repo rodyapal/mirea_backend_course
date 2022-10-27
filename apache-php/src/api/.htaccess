@@ -1,9 +1,6 @@
 <Files users.php>
-    Allow from All
+    Require all granted
 </Files>
 <Files valuables.php>
-    Allow from All
-</Files>
-<Files db_access.php>
-    Deny from all
+    Require all granted
 </Files>

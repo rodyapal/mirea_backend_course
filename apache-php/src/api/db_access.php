@@ -1,4 +1,5 @@
 <?php
+require_once '../utils.php';
 
 function read_from(
 	string $table,
@@ -6,13 +7,20 @@ function read_from(
 	$values
 ): string
 {
-	$query = "select * from " . $table . " where ";
-	for ($i = 0; $i < count($columns); $i++) {
-		$query .= $columns[$i] . " = " . $values[$i];
-		if ($i < count($columns) - 1) $query .= " and ";
+	if (count($columns) == 0) {
+		$query = "select * from " . $table;
+	}
+	else {
+		$query = "select * from " . $table . " where ";
+		for ($i = 0; $i < count($columns); $i++) {
+			$query .= $columns[$i] . " = '" . $values[$i] . "'";
+			if ($i < count($columns) - 1) $query .= " and ";
+		}
 	}
 	$mysqli = openMysqli();
-	return $mysqli->query($query);
+	$result = $mysqli->query($query);
+	$mysqli->close();
+	return json_encode($result->fetch_all(MYSQLI_ASSOC));
 }
 
 function delete_from(
@@ -35,7 +43,7 @@ function update_into(
 {
 	$query = "update " . $table . " set ";
 	for ($i = 0; $i < count($columns); $i++) {
-		$query .= $columns[$i] . " = " . $values[$i];
+		$query .= $columns[$i] . " = '" . $values[$i] . "'";
 		if ($i < count($columns) - 1) $query .= ", ";
 	}
 	$query .= " where " . id . " = " . $id;
@@ -58,7 +66,8 @@ function insert_into(
 	}
 	$query .= ") values (";
 	for ($i = 0; $i < count($values); $i++) {
-		$query .= $values[$i];
+		if (is_string($values[$i])) $query .= "'" . $values[$i] . "'";
+		else $query .= $values[$i];
 		if ($i < count($values) - 1) $query .= ", ";
 	}
 	$query .= ")";
