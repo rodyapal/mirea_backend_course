@@ -1,5 +1,6 @@
 FROM php:8.0-apache
 WORKDIR /var/www/html-dynamic
+RUN mkdir "pdf" && mkdir "pdf/files"
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY php.ini /usr/local/etc/php/php.ini
