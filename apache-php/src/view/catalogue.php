@@ -23,13 +23,13 @@ session_start();
 <body>
 <h1>Catalogue</h1>
 <?php
-require_once 'utils.php';
+require_once '../model/utils.php';
 $mysqli = openMysqli();
 $result = $mysqli->query("select * from " . valuables);
 ?>
 <div class="list"><?php if ($result->num_rows > 0) foreach ($result as $valuable) echo <<<A
             <div
-                onclick="window.location.replace('view.php?id={$valuable[id]}')" 
+                onclick="window.location.replace('valuables.php?id={$valuable[id]}')" 
                 class="item">
                 <span>{$valuable[title]}</span>
                 <span>{$valuable[description]}</span>

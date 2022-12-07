@@ -10,8 +10,8 @@ session_start();
 </head>
 <body>
 <?php
-require_once "faker.php";
-require_once "data_load.php";
+require_once "../model/stats/faker.php";
+require_once "../model/stats/data_load.php";
 
 generate_data();
 ?>
@@ -39,16 +39,16 @@ generate_data();
 
 <br>
 <?php
-require_once "watermark.php";
-require_once "plot_bar.php";
-require_once "plot_pie.php";
-require_once "plot_scatter.php";
+require_once "../model/stats/watermark.php";
+require_once "../model/stats/plot_bar.php";
+require_once "../model/stats/plot_pie.php";
+require_once "../model/stats/plot_scatter.php";
 
 draw_plot_pie();
 draw_plot_bar();
 draw_plot_scatter();
 
-$images = array("images/plot_bar.png", "images/plot_pie.png", "images/plot_scatter.png");
+$images = array("../storage/images/plot_bar.png", "../storage/mages/plot_pie.png", "../storage/images/plot_scatter.png");
 
 foreach ($images as $image) {
     add_watermark($image);

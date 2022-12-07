@@ -8,7 +8,7 @@
 <body>
 <h1>List of users</h1>
 <?php
-require_once 'utils.php';
+require_once '../model/utils.php';
 $mysqli = openMysqli();
 $users = $mysqli->query('select * from ' . users);
 ?>

@@ -20,4 +20,4 @@ if (!str_contains($content, '%PDF') ) {
 }
 echo "</pre>";
 ?>
-<a href="files.php">К списку</a>
+<a href="../view/pdf_files.php">К списку</a>

@@ -1,4 +1,7 @@
 <?php
+
+use stats\FakerDataInstance;
+
 require_once '/etc/apache2/vendor/autoload.php';
 require_once 'FakerDataInstance.php';
 

@@ -1,0 +1,5 @@
+<Files admin.php>
+    AuthName "Login required"
+    AuthType Basic
+    Require valid-user
+</Files>

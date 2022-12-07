@@ -6,7 +6,7 @@
 </head>
 <ol>
 <body>
-<form enctype="multipart/form-data" action="loader.php" method="POST">
+<form enctype="multipart/form-data" action="../model/pdf_loader.php" method="POST">
     <div>
     <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
     <br>
@@ -20,7 +20,7 @@
 
 
 <?php
-$files = scandir('./files');
+$files = scandir('../storage/pdf');
 if (count($files) == 0) {
     echo "<h2>Нет загруженных файлов</h2>";
 } else {
