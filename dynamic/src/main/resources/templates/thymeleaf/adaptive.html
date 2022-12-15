@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Adaptive page</title>
+</head>
+<body>
+	<div th:if="${params.isRu}">
+		<div th:insert="https://nginx/src/adaptive/lang/page_ru.html :: body"></div>
+	</div>
+</body>
+</html>
+<!--<?php-->
+
+<!--session_start();-->
+<!--$themeStyleSheet = 'http://localhost:8001/adaptive/css/light_theme.css';-->
+<!--if (!empty($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark') {-->
+<!--    $themeStyleSheet = 'http://localhost:8001/adaptive/css/dark_theme.css';-->
+<!--}-->
+
+<!--if (!empty($_COOKIE['lang'])) {-->
+<!--    $lang = $_COOKIE['lang'];-->
+<!--} else {-->
+<!--    $lang = "ru";-->
+<!--}-->
+<!--?>-->
+<!--<html lang="EN">-->
+<!--<head>-->
+<!--	<meta charset="UTF-8">-->
+<!--	<title>Adaptive</title>-->
+<!--	<link href="<?php echo $themeStyleSheet; ?>" rel="stylesheet" id="theme-link">-->
+<!--</head>-->
+<!--<?php if ($lang == "ru"):-->
+<!--    include "lang/ru/page.php"-->
+<!--    ?>-->
+<!--<?php else:-->
+<!--    include "lang/en/page.php"-->
+<!--    ?>-->
+<!--<?php endif ?>-->
+
+<!--</html>-->
