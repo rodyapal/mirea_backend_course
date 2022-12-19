@@ -1,22 +1,13 @@
 package rodyapal.mirea.model.adaptive
 
-interface LangProvider {
-	val username: String
-	val themeChanger: String
-	val langChanger: String
-	val button: String
-}
+const val TEXT_EN_TITLE = "Adaptive page"
+const val TEXT_EN_GREETING = "Hello"
+const val TEXT_EN_USERNAME = "Username:"
+const val TEXT_EN_THEME = "Theme:"
+const val TEXT_EN_LANG = "Lang:"
 
-object EnLangProvider : LangProvider {
-	override val username = "Username:"
-	override val themeChanger = "Theme changer:"
-	override val langChanger = "Lang changer:"
-	override val button = "Submit"
-}
-
-object RuLangProvider : LangProvider {
-	override val username = "Имя пользователя:"
-	override val themeChanger = "Изменить тему:"
-	override val langChanger = "Изменить язык:"
-	override val button = "Подтвердить"
-}
+const val TEXT_RU_TITLE = "Адаптивная страница"
+const val TEXT_RU_GREETING = "Привет"
+const val TEXT_RU_USERNAME = "Имя пользователя:"
+const val TEXT_RU_THEME = "Тема:"
+const val TEXT_RU_LANG = "Язык:"

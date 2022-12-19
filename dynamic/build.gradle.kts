@@ -48,4 +48,5 @@ dependencies {
 
 	// HTML DSL
 	implementation("io.ktor:ktor-server-html-builder:$ktorVersion")
+//	implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.7.24")
 }
