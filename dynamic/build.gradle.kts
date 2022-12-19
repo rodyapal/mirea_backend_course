@@ -32,6 +32,8 @@ dependencies {
 	implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktorVersion")
 	implementation("io.ktor:ktor-server-tomcat-jvm:$ktorVersion")
 	implementation("ch.qos.logback:logback-classic:$logbackVersion")
+	implementation("io.ktor:ktor-server-cors:$ktorVersion")
+	implementation("io.ktor:ktor-server-cors-jvm:2.2.1")
 	testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
 
@@ -43,4 +45,7 @@ dependencies {
 
 	// Redis
 	implementation("io.github.crackthecodeabhi:kreds:0.8")
+
+	// HTML DSL
+	implementation("io.ktor:ktor-server-html-builder:$ktorVersion")
 }

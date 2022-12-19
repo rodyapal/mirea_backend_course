@@ -3,39 +3,130 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Adaptive page</title>
+	<style th:if="${params.isDark}">
+        body {
+            --text-color: #eee;
+            --bkg-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            margin: 10px;
+            height: 40px;
+            border: 0;
+            width: 200px;
+            outline: none;
+            background: white;
+            color: black;
+        }
+
+        input {
+            height: 40px;
+            width: 200px;
+        }
+
+        body {
+            background: var(--bkg-color);
+        }
+
+        h1,
+        p, label {
+            color: var(--text-color);
+        }
+	</style>
+	<style th:unless="${params.isDark}">
+        body {
+            --text-color: #222;
+            --bkg-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            margin: 10px;
+            height: 40px;
+            border: 0;
+            width: 200px;
+            outline: none;
+            background: blue;
+            color: white;
+        }
+
+        input {
+            height: 40px;
+            width: 200px;
+        }
+
+        body {
+            background: var(--bkg-color);
+        }
+
+        h1,
+        p, label {
+            color: var(--text-color);
+        }
+	</style>
 </head>
 <body>
-	<div th:if="${params.isRu}">
-		<div th:insert="https://nginx/src/adaptive/lang/page_ru.html :: body"></div>
-	</div>
+<div th:if="${params.isRu}">
+	<div th:insert="lang/page_ru :: body-ru"></div>
+</div>
+<div th:unless="${params.isRu}">
+	<div th:insert="lang/page_en :: body-en"></div>
+</div>
 </body>
+<script>
+    function changeTheme() {
+        let cookieHeader = new Headers();
+        cookieHeader.append("Cookie", "adaptive_session=367f1d31c89d28aa9e297a4652506bf7");
+
+        let requestOptions = {
+            method: 'POST',
+            headers: cookieHeader,
+            redirect: 'follow'
+        };
+
+        fetch("https://localhost:8001/adaptive?theme=change", requestOptions)
+    }
+
+    function changeLang() {
+        let cookieHeader = new Headers();
+        cookieHeader.append("Cookie", "adaptive_session=367f1d31c89d28aa9e297a4652506bf7");
+
+        let requestOptions = {
+            method: 'POST',
+            headers: cookieHeader,
+            redirect: 'follow'
+        };
+
+        fetch("/adaptive?lang=change", requestOptions)
+    }
+
+    function changeName() {
+        let name = document.getElementById("name_field").value
+        let cookieHeader = new Headers();
+        cookieHeader.append("Cookie", "adaptive_session=367f1d31c89d28aa9e297a4652506bf7");
+
+        let requestOptions = {
+            method: 'POST',
+            headers: cookieHeader,
+            redirect: 'follow'
+        };
+
+        fetch(`/adaptive?name=${name}`, requestOptions)
+    }
+</script>
 </html>
-<!--<?php-->
-
-<!--session_start();-->
-<!--$themeStyleSheet = 'http://localhost:8001/adaptive/css/light_theme.css';-->
-<!--if (!empty($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark') {-->
-<!--    $themeStyleSheet = 'http://localhost:8001/adaptive/css/dark_theme.css';-->
-<!--}-->
-
-<!--if (!empty($_COOKIE['lang'])) {-->
-<!--    $lang = $_COOKIE['lang'];-->
-<!--} else {-->
-<!--    $lang = "ru";-->
-<!--}-->
-<!--?>-->
-<!--<html lang="EN">-->
-<!--<head>-->
-<!--	<meta charset="UTF-8">-->
-<!--	<title>Adaptive</title>-->
-<!--	<link href="<?php echo $themeStyleSheet; ?>" rel="stylesheet" id="theme-link">-->
-<!--</head>-->
-<!--<?php if ($lang == "ru"):-->
-<!--    include "lang/ru/page.php"-->
-<!--    ?>-->
-<!--<?php else:-->
-<!--    include "lang/en/page.php"-->
-<!--    ?>-->
-<!--<?php endif ?>-->
-
-<!--</html>-->

@@ -16,14 +16,6 @@ services:
     ports:
       - '3306:3306'
 
-#  apache-php:
-#    container_name: back_practice_apache_php
-#    build: apache-php
-#    volumes:
-#      - ./apache-php/src:/var/www/html-dynamic
-#    ports:
-#      - '8001:8001'
-
   nginx:
     container_name: back_practice_nginx
     build: nginx
