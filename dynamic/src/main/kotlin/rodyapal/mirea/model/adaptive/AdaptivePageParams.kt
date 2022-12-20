@@ -1,4 +1,4 @@
-package rodyapal.mirea.model
+package rodyapal.mirea.model.adaptive
 
 data class AdaptivePageParams(
 	val userName: String,
