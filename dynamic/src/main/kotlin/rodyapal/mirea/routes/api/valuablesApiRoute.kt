@@ -1,4 +1,4 @@
-package rodyapal.mirea.routes
+package rodyapal.mirea.routes.api
 
 import io.ktor.http.*
 import io.ktor.server.application.*

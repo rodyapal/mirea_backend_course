@@ -19,6 +19,7 @@ fun main() {
 fun Application.module() {
 	AppDb.setup()
 	RedisFileStorage.setup()
+	configureAuthentication()
 	configureSession()
 	configureTemplating()
 	configureSerialization()
