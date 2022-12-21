@@ -11,7 +11,6 @@ const val APP_PORT = 8001
 const val APP_HOST = "0.0.0.0"
 
 fun main() {
-	AppDb.self
 	embeddedServer(Tomcat, port = APP_PORT, host = APP_HOST, module = Application::module)
 		.start(wait = true)
 }

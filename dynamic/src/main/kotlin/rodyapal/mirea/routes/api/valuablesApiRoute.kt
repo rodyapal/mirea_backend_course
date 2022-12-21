@@ -5,6 +5,7 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import rodyapal.mirea.model.database.AppDb
 import rodyapal.mirea.model.database.ValuableDto
 import rodyapal.mirea.model.database.ValuableEntity
@@ -13,7 +14,11 @@ fun Route.valuablesApiRoute() {
 	route("/api/v1/valuables") {
 		get {
 			call.parameters["id"]?.toIntOrNull()?.let {
-				call.respond(AppDb.query { ValuableEntity[it].idData })
+				try {
+					call.respond(AppDb.query { ValuableEntity[it].idData })
+				} catch (e: EntityNotFoundException) {
+					call.respondText(status = HttpStatusCode.BadRequest) { "Invalid id" }
+				}
 			} ?: AppDb.query { ValuableEntity.all().map { it.idData } }.let {
 				if (it.isNotEmpty()) {
 					call.respond(it)
@@ -21,7 +26,6 @@ fun Route.valuablesApiRoute() {
 					call.respondText("No users found", status = HttpStatusCode.OK)
 				}
 			}
-			call.respondText { "data" }
 		}
 		post {
 			val valuable = call.receive<ValuableDto>()
@@ -37,6 +41,7 @@ fun Route.valuablesApiRoute() {
 		delete {
 			call.parameters["id"]?.toIntOrNull()?.let {
 				AppDb.query { ValuableEntity[it].delete() }
+				call.respondText(status = HttpStatusCode.OK) { "Deleted" }
 			} ?: call.respondText("Invalid id param", status = HttpStatusCode.BadRequest)
 		}
 		patch {
@@ -51,6 +56,7 @@ fun Route.valuablesApiRoute() {
 					call.parameters["cost"]?.toIntOrNull()?.let { entity.cost = it }
 				}
 			}
+			call.respondText(status = HttpStatusCode.OK) { "Updated" }
 		}
 	}
 }
