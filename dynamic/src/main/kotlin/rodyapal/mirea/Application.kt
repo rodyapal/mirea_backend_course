@@ -4,7 +4,7 @@ import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.tomcat.*
 import rodyapal.mirea.config.*
-import rodyapal.mirea.model.AppDb
+import rodyapal.mirea.model.database.AppDb
 import rodyapal.mirea.model.file.RedisFileStorage
 
 const val APP_PORT = 8001
@@ -20,7 +20,6 @@ fun Application.module() {
 	AppDb.setup()
 	RedisFileStorage.setup()
 	configureSession()
-	configureSecurity()
 	configureTemplating()
 	configureSerialization()
 	configureRouting()

@@ -5,12 +5,9 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import org.jetbrains.exposed.sql.StdOutSqlLogger
-import org.jetbrains.exposed.sql.addLogger
-import org.jetbrains.exposed.sql.transactions.transaction
+import rodyapal.mirea.model.database.AppDb.query
 import rodyapal.mirea.model.database.UserDto
 import rodyapal.mirea.model.database.UserEntity
-import rodyapal.mirea.model.AppDb.query
 
 fun Route.userApiRouting() {
 	route("/api/v1/user") {

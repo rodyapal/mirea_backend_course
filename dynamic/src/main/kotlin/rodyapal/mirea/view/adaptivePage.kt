@@ -1,7 +1,6 @@
 package rodyapal.mirea.view
 
 import kotlinx.html.*
-import rodyapal.mirea.model.adaptive.AdaptivePageParams
 import rodyapal.mirea.model.adaptive.*
 
 fun HTML.adaptivePage(

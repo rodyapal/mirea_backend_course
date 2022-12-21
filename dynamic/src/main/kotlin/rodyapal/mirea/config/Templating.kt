@@ -1,8 +1,8 @@
 package rodyapal.mirea.config
 
-import io.ktor.server.thymeleaf.Thymeleaf
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import io.ktor.server.application.*
+import io.ktor.server.thymeleaf.*
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 
 fun Application.configureTemplating() {
 	install(Thymeleaf) {
