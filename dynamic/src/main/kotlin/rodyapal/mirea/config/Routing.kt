@@ -4,6 +4,7 @@ import io.ktor.server.routing.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import rodyapal.mirea.routes.adaptivePageRoute
+import rodyapal.mirea.routes.pdfLoadRoute
 import rodyapal.mirea.routes.userApiRouting
 import rodyapal.mirea.routes.valuablesApiRoute
 
@@ -12,6 +13,7 @@ fun Application.configureRouting() {
 		valuablesApiRoute()
 		userApiRouting()
 		adaptivePageRoute()
+		pdfLoadRoute()
 		get("/") {
 			call.respondText("Hello World!")
 		}

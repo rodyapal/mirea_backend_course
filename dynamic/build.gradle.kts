@@ -48,5 +48,8 @@ dependencies {
 
 	// HTML DSL
 	implementation("io.ktor:ktor-server-html-builder:$ktorVersion")
-//	implementation("dev.scottpierce.kotlin-html:kotlin-html-ktor:0.7.24")
+
+	// File mime type resolver
+	implementation("org.apache.tika:tika-core:2.6.0")
+	implementation("org.apache.tika:tika-parsers-standard-package:2.6.0")
 }
