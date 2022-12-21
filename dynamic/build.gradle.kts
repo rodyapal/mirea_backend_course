@@ -60,6 +60,10 @@ dependencies {
 	// Plotting
 	implementation("org.jetbrains.lets-plot:lets-plot-kotlin-jvm:4.1.0")
 
+	// Fixture generation
+	implementation("com.appmattus.fixture:fixture:1.2.0")
+//	implementation("com.appmattus.fixture:fixture-javafaker:1.2.0")
+
 	// Testing
 	testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
