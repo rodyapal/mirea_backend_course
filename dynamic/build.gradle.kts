@@ -23,19 +23,23 @@ repositories {
 }
 
 dependencies {
+	// Core
 	implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-tomcat-jvm:$ktorVersion")
+
+	// Plugins
 	implementation("io.ktor:ktor-server-auth-jvm:$ktorVersion")
 	implementation("io.ktor:ktor-server-sessions-jvm:$ktorVersion")
 	implementation("io.ktor:ktor-server-swagger:$ktorVersion")
 	implementation("io.ktor:ktor-server-thymeleaf-jvm:$ktorVersion")
 	implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
 	implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktorVersion")
-	implementation("io.ktor:ktor-server-tomcat-jvm:$ktorVersion")
-	implementation("ch.qos.logback:logback-classic:$logbackVersion")
 	implementation("io.ktor:ktor-server-cors:$ktorVersion")
 	implementation("io.ktor:ktor-server-cors-jvm:2.2.1")
-	testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+
+	// Logs
+	implementation("ch.qos.logback:logback-classic:$logbackVersion")
+	implementation("org.slf4j:slf4j-simple:2.0.5")
 
 	// Exposed ORM
 	implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
@@ -52,4 +56,11 @@ dependencies {
 	// File mime type resolver
 	implementation("org.apache.tika:tika-core:2.6.0")
 	implementation("org.apache.tika:tika-parsers-standard-package:2.6.0")
+
+	// Plotting
+	implementation("org.jetbrains.lets-plot:lets-plot-kotlin-jvm:4.1.0")
+
+	// Testing
+	testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
 }
